@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbgt4hopo4hwa"]
+
+[ext_resource type="Shader" path="res://scenes/ui/menu.gdshader" id="1_ia2to"]
+[ext_resource type="Script" path="res://scripts/ui/menu/settings.gd" id="1_v2t74"]
+[ext_resource type="FontFile" uid="uid://omfvsbdfk882" path="res://assets/fonts/Astron Boy.otf" id="2_41efe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jju8f"]
+shader = ExtResource("1_ia2to")
+shader_parameter/speed = 5.0
+shader_parameter/intensity = 0.4
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2t74")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(567, 321)
+
+[node name="settings_bg" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jju8f")
+layout_mode = 0
+offset_left = -951.0
+offset_top = -386.0
+offset_right = 4161.0
+offset_bottom = 1747.0
+color = Color(0, 0, 0, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 17.0
+offset_right = 668.0
+offset_bottom = 89.0
+theme_override_fonts/font = ExtResource("2_41efe")
+theme_override_font_sizes/font_size = 60
+text = "Settings"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.0
+offset_top = -38.0
+offset_right = 194.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Audio" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_41efe")
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+vertical_alignment = 1
+
+[node name="AudioSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_41efe")
+theme_override_font_sizes/font_size = 40
+text = "Return"
+
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

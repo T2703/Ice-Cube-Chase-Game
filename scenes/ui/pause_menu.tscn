@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1e2cf8kxpeq8"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/pause_menu.gd" id="1_0pk7i"]
+[ext_resource type="FontFile" uid="uid://omfvsbdfk882" path="res://assets/fonts/Astron Boy.otf" id="1_1b2x5"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_0pk7i")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 427.0
+offset_top = 209.0
+offset_right = 718.0
+offset_bottom = 452.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1b2x5")
+theme_override_font_sizes/font_size = 50
+text = "PAUSED
+"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1b2x5")
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1b2x5")
+theme_override_font_sizes/font_size = 40
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_1b2x5")
+theme_override_font_sizes/font_size = 40
+text = "Quit"
+
+[connection signal="pressed" from="HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

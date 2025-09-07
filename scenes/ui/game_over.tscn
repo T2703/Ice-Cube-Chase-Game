@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://csy1c7rufmqv3"]
+
+[ext_resource type="Shader" path="res://scenes/ui/menu.gdshader" id="1_4nqjg"]
+[ext_resource type="Script" path="res://scripts/ui/menu/game_over.gd" id="1_d4kog"]
+[ext_resource type="FontFile" uid="uid://omfvsbdfk882" path="res://assets/fonts/Astron Boy.otf" id="1_wl0ym"]
+[ext_resource type="Texture2D" uid="uid://gabbu7a818xh" path="res://assets/ice cube/ice cube game over.png" id="2_c57wg"]
+[ext_resource type="AudioStream" uid="uid://dpgfwd7yt3u4" path="res://assets/sounds/menu/game_over.mp3" id="5_xf8sm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqev7"]
+shader = ExtResource("1_4nqjg")
+shader_parameter/speed = 5.0
+shader_parameter/intensity = 0.4
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1152.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4kog")
+
+[node name="game_over_bg" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_oqev7")
+layout_mode = 0
+offset_left = -1488.0
+offset_top = -665.0
+offset_right = 3624.0
+offset_bottom = 1468.0
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 3.0
+offset_right = 941.0
+offset_bottom = 87.0
+theme_override_fonts/font = ExtResource("1_wl0ym")
+theme_override_font_sizes/font_size = 70
+text = "Game Over! You got cubed!"
+
+[node name="IceCubeGameOver" type="Sprite2D" parent="."]
+position = Vector2(676, 367)
+texture = ExtResource("2_c57wg")
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 135.0
+offset_right = 684.0
+offset_bottom = 196.0
+theme_override_fonts/font = ExtResource("1_wl0ym")
+theme_override_font_sizes/font_size = 40
+text = "Retry"
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 228.0
+offset_right = 683.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("1_wl0ym")
+theme_override_font_sizes/font_size = 40
+text = "Quit
+"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(571, 325)
+
+[node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xf8sm")
+autoplay = true
+
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="toggled" from="RetryButton" to="." method="_on_retry_button_toggled"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

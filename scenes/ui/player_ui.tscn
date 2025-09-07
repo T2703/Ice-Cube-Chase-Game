@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx4htde8cadps"]
+
+[ext_resource type="FontFile" uid="uid://omfvsbdfk882" path="res://assets/fonts/Astron Boy.otf" id="1_idwuc"]
+[ext_resource type="Script" path="res://scripts/ui/player/stamina.gd" id="2_w7mpv"]
+[ext_resource type="Script" path="res://scripts/ui/player/timer.gd" id="3_i535l"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+
+[node name="BoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 587.0
+offset_right = -894.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stamina" type="Label" parent="BoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_idwuc")
+theme_override_font_sizes/font_size = 50
+text = "Stamina: 100"
+script = ExtResource("2_w7mpv")
+
+[node name="BoxContainer2" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 491.0
+offset_top = 3.0
+offset_right = -550.0
+offset_bottom = -585.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Label" parent="BoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_idwuc")
+theme_override_font_sizes/font_size = 50
+text = "Timer"
+script = ExtResource("3_i535l")

@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://otly86x2vj2v"]
+
+[ext_resource type="Texture2D" uid="uid://dbdabhrou3ts4" path="res://assets/player/player.png" id="1_em74r"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_oe6cb"]
+[ext_resource type="AudioStream" uid="uid://dtyc186nedmpw" path="res://assets/sounds/player/footsteps.wav" id="3_8auyg"]
+[ext_resource type="PackedScene" uid="uid://dx4htde8cadps" path="res://scenes/ui/player_ui.tscn" id="4_yhbrm"]
+[ext_resource type="PackedScene" uid="uid://c1e2cf8kxpeq8" path="res://scenes/ui/pause_menu.tscn" id="5_d77r6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxb7f"]
+size = Vector2(11, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uae3p"]
+size = Vector2(15, 22.5)
+
+[sub_resource type="Gradient" id="Gradient_jrm3e"]
+offsets = PackedFloat32Array(0.339506, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2kuax"]
+gradient = SubResource("Gradient_jrm3e")
+width = 80
+height = 80
+fill = 1
+fill_from = Vector2(0.493902, 0.457317)
+fill_to = Vector2(1, 0.442478)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 2
+script = ExtResource("1_oe6cb")
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(7, -2.99999)
+scale = Vector2(0.0725, 0.0775)
+texture = ExtResource("1_em74r")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1.5, 1)
+shape = SubResource("RectangleShape2D_vxb7f")
+
+[node name="PlayerHitbox" type="Area2D" parent="." groups=["player"]]
+visible = false
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(1.5, 2)
+shape = SubResource("RectangleShape2D_uae3p")
+debug_color = Color(0.200616, 0.641007, 0, 0.42)
+
+[node name="MovementTimers" type="Node2D" parent="."]
+
+[node name="StaminaTimer" type="Timer" parent="MovementTimers"]
+wait_time = 0.05
+
+[node name="StaminaRegenTimer" type="Timer" parent="MovementTimers"]
+wait_time = 0.2
+
+[node name="DashTimer" type="Timer" parent="MovementTimers"]
+wait_time = 0.235
+
+[node name="InvicinibleTimer" type="Timer" parent="MovementTimers"]
+wait_time = 0.2
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_8auyg")
+volume_db = 9.905
+
+[node name="FootstepsTimer" type="Timer" parent="SFX"]
+wait_time = 0.45
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(-1, 1.90735e-06)
+scale = Vector2(3.125, 1.75)
+energy = 1.15
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 8.0
+texture = SubResource("GradientTexture2D_2kuax")
+
+[node name="PlayerUI" parent="." instance=ExtResource("4_yhbrm")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_d77r6")]
+
+[connection signal="area_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_area_entered"]
+[connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="timeout" from="MovementTimers/StaminaTimer" to="." method="_on_stamina_timer_timeout"]
+[connection signal="timeout" from="MovementTimers/StaminaRegenTimer" to="." method="_on_stamina_regen_timer_timeout"]
+[connection signal="timeout" from="MovementTimers/DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="MovementTimers/InvicinibleTimer" to="." method="_on_invicinible_timer_timeout"]
+[connection signal="timeout" from="SFX/FootstepsTimer" to="." method="_on_footsteps_timer_timeout"]

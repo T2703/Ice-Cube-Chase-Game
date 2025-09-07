@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwi4naies6iw3"]
+
+[ext_resource type="Texture2D" uid="uid://seor25wc3bh" path="res://assets/ice cube/ice cube.png" id="1_7hoc8"]
+[ext_resource type="Script" path="res://scripts/ice cube/ice_cube.gd" id="1_s8fyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wxa8"]
+size = Vector2(18, 23)
+
+[node name="IceCube" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 2
+script = ExtResource("1_s8fyi")
+
+[node name="IceCube" type="Sprite2D" parent="."]
+position = Vector2(-0.999996, -1.42187)
+scale = Vector2(0.196078, 0.175918)
+texture = ExtResource("1_7hoc8")
+
+[node name="NavigationAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
+target_desired_distance = 1.0
+path_max_distance = 10.0
+avoidance_enabled = true
+radius = 9.6
+
+[node name="Jumpscare" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Jumpscare"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_3wxa8")
