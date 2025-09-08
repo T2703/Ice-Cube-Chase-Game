@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbgt4hopo4hwa"]
+[gd_scene load_steps=6 format=3 uid="uid://cbgt4hopo4hwa"]
 
 [ext_resource type="Shader" path="res://scenes/ui/menu.gdshader" id="1_ia2to"]
 [ext_resource type="Script" path="res://scripts/ui/menu/settings.gd" id="1_v2t74"]
 [ext_resource type="FontFile" uid="uid://omfvsbdfk882" path="res://assets/fonts/Astron Boy.otf" id="2_41efe"]
+[ext_resource type="Script" path="res://scripts/ui/menu/audio_slider.gd" id="4_uhst5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jju8f"]
 shader = ExtResource("1_ia2to")
@@ -55,15 +56,33 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Audio" type="Label" parent="VBoxContainer"]
+[node name="Master" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_41efe")
 theme_override_font_sizes/font_size = 30
-text = "Audio"
+text = "Master"
+vertical_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_uhst5")
+bus_name = "Master"
+
+[node name="Music" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_41efe")
+theme_override_font_sizes/font_size = 30
+text = "Music"
 vertical_alignment = 1
 
 [node name="AudioSlider" type="HSlider" parent="VBoxContainer"]
 layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_uhst5")
+bus_name = "Music"
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

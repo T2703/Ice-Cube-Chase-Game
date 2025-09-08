@@ -72,6 +72,7 @@ position = Vector2(571, 325)
 [node name="GameOverMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_xf8sm")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="toggled" from="RetryButton" to="." method="_on_retry_button_toggled"]

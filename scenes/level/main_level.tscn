@@ -65,3 +65,4 @@ color = Color(0.125911, 0.125911, 0.125911, 1)
 stream = ExtResource("5_vwhs5")
 volume_db = -1.354
 autoplay = true
+bus = &"Music"
