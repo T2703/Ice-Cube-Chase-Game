@@ -37,3 +37,5 @@ shape = SubResource("RectangleShape2D_3wxa8")
 stream = ExtResource("3_5ohvd")
 volume_db = 2.0
 bus = &"SFX"
+
+[node name="Voice" type="Node2D" parent="SFX"]
