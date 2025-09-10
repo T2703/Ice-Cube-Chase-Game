@@ -11,7 +11,6 @@ func _ready() -> void:
 	load_settings()
 	apply_settings()
 	
-
 # Sets the window mode.
 func set_window_mode(mode: WindowMode) -> void:
 	window_mode = mode

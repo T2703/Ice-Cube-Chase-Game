@@ -24,6 +24,9 @@ const SEARCH_TIMER = 5.0
 # This gets the player from the scene/level.
 @onready var player = get_tree().get_first_node_in_group("player").get_parent()
 
+# The spotted sound effect.
+@onready var spotted: AudioStreamPlayer2D = $SFX/Spotted
+
 # The time he has since seen you.
 var time_since_seen = 0.0
 
@@ -190,6 +193,8 @@ func search_behavior(delta):
 func check_player_detection():
 	if player and global_position.distance_to(player.global_position) < DETECTION_RADIUS:
 		if can_see_player():
+			if state != CHASE:
+				spotted.play()
 			state = CHASE
 			time_since_seen = 0.0
 			last_seen_position = player.global_position

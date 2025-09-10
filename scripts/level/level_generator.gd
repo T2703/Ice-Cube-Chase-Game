@@ -15,6 +15,9 @@ extends Node2D
 # Spawn timer for the ice cubes.
 @onready var ice_cube_spawner_timer: Timer = $IceCubeSpawnerTimer
 
+# The spawn sound effect.
+@onready var spawn: AudioStreamPlayer = $SFX/Spawn
+
 # Width of the level.
 const LEVEL_WIDTH = 120
 
@@ -238,5 +241,6 @@ func _on_ice_cube_spawner_timer_timeout() -> void:
 			patrols.append(r.get_center() * 16)
 		ice_cube_instance.set_patrol_points(patrols)
 		
+		spawn.play()
 		add_child(ice_cube_instance)
 		

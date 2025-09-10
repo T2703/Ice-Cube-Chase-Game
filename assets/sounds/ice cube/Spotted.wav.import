@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dlnkcpgshq6vh"
+path="res://.godot/imported/Spotted.wav-6347aa75e893aa9ea6a06a4e158321b0.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice cube/Spotted.wav"
+dest_files=["res://.godot/imported/Spotted.wav-6347aa75e893aa9ea6a06a4e158321b0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

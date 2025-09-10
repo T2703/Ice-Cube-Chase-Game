@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3byg2xh7lgiw"]
+[gd_scene load_steps=12 format=3 uid="uid://d3byg2xh7lgiw"]
 
 [ext_resource type="Script" path="res://scripts/level/level_generator.gd" id="1_4nsyn"]
 [ext_resource type="Texture2D" uid="uid://ihg6wt1q3qcu" path="res://assets/room/tileset.png" id="2_pf6mt"]
 [ext_resource type="PackedScene" uid="uid://cwi4naies6iw3" path="res://scenes/ice cube/ice_cube.tscn" id="4_pd2wr"]
 [ext_resource type="PackedScene" uid="uid://otly86x2vj2v" path="res://scenes/player/player.tscn" id="4_ukmqj"]
 [ext_resource type="AudioStream" uid="uid://cwx7mmlvr2ark" path="res://assets/sounds/level/ambeince.wav" id="5_vwhs5"]
+[ext_resource type="AudioStream" uid="uid://68234iwimkhn" path="res://assets/sounds/ice cube/Spawn.wav" id="6_7enpf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_akn42"]
 
@@ -66,6 +67,10 @@ stream = ExtResource("5_vwhs5")
 volume_db = -1.354
 autoplay = true
 bus = &"Music"
+
+[node name="Spawn" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_7enpf")
+bus = &"SFX"
 
 [node name="IceCubeSpawnerTimer" type="Timer" parent="."]
 wait_time = 30.0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://68234iwimkhn"
+path="res://.godot/imported/Spawn.wav-c3824883f09c5395e9d9f3c03d18ed0c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice cube/Spawn.wav"
+dest_files=["res://.godot/imported/Spawn.wav-c3824883f09c5395e9d9f3c03d18ed0c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
