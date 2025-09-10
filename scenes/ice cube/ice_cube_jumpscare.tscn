@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://tjcvkxvbpbfc"]
+[gd_scene load_steps=5 format=3 uid="uid://tjcvkxvbpbfc"]
 
 [ext_resource type="Script" path="res://scripts/ice cube/ice_cube_jumpscare.gd" id="1_8yloy"]
 [ext_resource type="Texture2D" uid="uid://bq23j3aibnugj" path="res://assets/ice cube/ice cube jumpscare.png" id="1_lbsie"]
+[ext_resource type="AudioStream" uid="uid://bckryglqwbwyq" path="res://assets/sounds/ice cube/jumpscare1.wav" id="3_0moq3"]
+[ext_resource type="AudioStream" uid="uid://hbiwg4qwkli6" path="res://assets/sounds/ice cube/jumpscare2.wav" id="4_v4dsv"]
 
 [node name="IceCubeJumpscare" type="Node2D"]
 script = ExtResource("1_8yloy")
@@ -23,7 +25,19 @@ position = Vector2(553, 304)
 zoom = Vector2(3, 1)
 
 [node name="IceCubeTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.6
 autostart = true
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="Jumpscare1" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_0moq3")
+volume_db = 3.714
+bus = &"SFX"
+
+[node name="Jumpscare2" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_v4dsv")
+volume_db = 1.238
+bus = &"SFX"
 
 [connection signal="timeout" from="IceCubeTimer" to="." method="_on_ice_cube_timer_timeout"]

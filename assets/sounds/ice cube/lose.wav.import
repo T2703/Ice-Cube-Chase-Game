@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://iklc773gmjoa"
+path="res://.godot/imported/lose.wav-3ed65d35ab9918425b5e37a3d4f379be.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice cube/lose.wav"
+dest_files=["res://.godot/imported/lose.wav-3ed65d35ab9918425b5e37a3d4f379be.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

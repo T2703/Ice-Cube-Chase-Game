@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k327eqy6t8wj"
+path="res://.godot/imported/voice3.wav-b9ccb847270b25e0b1ee2d372b171001.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice cube/voice3.wav"
+dest_files=["res://.godot/imported/voice3.wav-b9ccb847270b25e0b1ee2d372b171001.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

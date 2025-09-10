@@ -1,8 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwi4naies6iw3"]
+[gd_scene load_steps=13 format=3 uid="uid://cwi4naies6iw3"]
 
 [ext_resource type="Texture2D" uid="uid://seor25wc3bh" path="res://assets/ice cube/ice cube.png" id="1_7hoc8"]
 [ext_resource type="Script" path="res://scripts/ice cube/ice_cube.gd" id="1_s8fyi"]
 [ext_resource type="AudioStream" uid="uid://dlnkcpgshq6vh" path="res://assets/sounds/ice cube/Spotted.wav" id="3_5ohvd"]
+[ext_resource type="AudioStream" uid="uid://iklc773gmjoa" path="res://assets/sounds/ice cube/lose.wav" id="4_76h67"]
+[ext_resource type="AudioStream" uid="uid://ccp8kngblofiy" path="res://assets/sounds/ice cube/voice1.wav" id="4_ysi6h"]
+[ext_resource type="AudioStream" uid="uid://blctot8p6njjw" path="res://assets/sounds/ice cube/voice2.wav" id="5_nq8fm"]
+[ext_resource type="AudioStream" uid="uid://k327eqy6t8wj" path="res://assets/sounds/ice cube/voice3.wav" id="6_2mmlw"]
+[ext_resource type="AudioStream" uid="uid://imkxlj30gbea" path="res://assets/sounds/ice cube/voice4.wav" id="7_vv755"]
+[ext_resource type="AudioStream" uid="uid://rbowh6a7buhr" path="res://assets/sounds/ice cube/voice5.wav" id="8_yrti6"]
+[ext_resource type="AudioStream" uid="uid://c3imkw0egkimc" path="res://assets/sounds/ice cube/voice6.wav" id="9_75g4k"]
+[ext_resource type="AudioStream" uid="uid://4jmt6emqyy6s" path="res://assets/sounds/ice cube/voice7.wav" id="10_d1eea"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wxa8"]
 size = Vector2(18, 23)
@@ -38,4 +46,36 @@ stream = ExtResource("3_5ohvd")
 volume_db = 2.0
 bus = &"SFX"
 
+[node name="Lose" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_76h67")
+bus = &"SFX"
+
 [node name="Voice" type="Node2D" parent="SFX"]
+
+[node name="Voice1" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("4_ysi6h")
+bus = &"SFX"
+
+[node name="Voice2" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("5_nq8fm")
+bus = &"SFX"
+
+[node name="Voice3" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("6_2mmlw")
+bus = &"SFX"
+
+[node name="Voice4" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("7_vv755")
+bus = &"SFX"
+
+[node name="Voice5" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("8_yrti6")
+bus = &"SFX"
+
+[node name="Voice6" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("9_75g4k")
+bus = &"SFX"
+
+[node name="Voice7" type="AudioStreamPlayer2D" parent="SFX/Voice"]
+stream = ExtResource("10_d1eea")
+bus = &"SFX"

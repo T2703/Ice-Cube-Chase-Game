@@ -12,6 +12,21 @@ const DURATION = 1
 # Timer for the jumpscare before transitiong to the game over.
 @onready var ice_cube_timer: Timer = $IceCubeTimer
 
+# Ice Cube scare quotes.
+@onready var jumpscare1: AudioStreamPlayer = $SFX/Jumpscare1
+@onready var jumpscare2: AudioStreamPlayer = $SFX/Jumpscare2
+
+# The list of scare quotes
+var ice_cube_jumpscare: Array = []
+
+func _ready() -> void:
+	ice_cube_jumpscare = []
+	if jumpscare1: ice_cube_jumpscare.append(jumpscare1)
+	if jumpscare2: ice_cube_jumpscare.append(jumpscare2)
+	
+	var random_jumpscare = ice_cube_jumpscare[randi() % ice_cube_jumpscare.size()]
+	random_jumpscare.play()
+
 func _process(delta: float) -> void:
 	camera_shake()
 

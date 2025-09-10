@@ -27,6 +27,21 @@ const SEARCH_TIMER = 5.0
 # The spotted sound effect.
 @onready var spotted: AudioStreamPlayer2D = $SFX/Spotted
 
+# The spotted lose effect.
+@onready var lose: AudioStreamPlayer2D = $SFX/Lose
+
+# Ice Cube voice quotes.
+@onready var voice1: AudioStreamPlayer2D = $SFX/Voice/Voice1
+@onready var voice2: AudioStreamPlayer2D = $SFX/Voice/Voice2
+@onready var voice3: AudioStreamPlayer2D = $SFX/Voice/Voice3
+@onready var voice4: AudioStreamPlayer2D = $SFX/Voice/Voice4
+@onready var voice5: AudioStreamPlayer2D = $SFX/Voice/Voice5
+@onready var voice6: AudioStreamPlayer2D = $SFX/Voice/Voice6
+@onready var voice7: AudioStreamPlayer2D = $SFX/Voice/Voice7
+
+# The list of voice quotes
+var ice_cube_voice: Array = []
+
 # The time he has since seen you.
 var time_since_seen = 0.0
 
@@ -68,6 +83,16 @@ func _ready() -> void:
 	nav_agent.radius = 12
 	nav_agent.avoidance_enabled = true 
 	NavigationServer2D.map_changed.connect(_on_map_changed)
+	
+	# Add in ice cube voice because error on the way I did it before.
+	ice_cube_voice = []
+	if voice1: ice_cube_voice.append(voice1)
+	if voice2: ice_cube_voice.append(voice2)
+	if voice3: ice_cube_voice.append(voice3)
+	if voice4: ice_cube_voice.append(voice4)
+	if voice5: ice_cube_voice.append(voice5)
+	if voice6: ice_cube_voice.append(voice6)
+	if voice7: ice_cube_voice.append(voice7)
 	
 	# Wait till the nav map is valid.
 	var map_rid = nav_agent.get_navigation_map()
@@ -144,6 +169,10 @@ func patrol_behavior():
 		# Go on to the next point Cube.
 		patrol_index = (patrol_index + 1) % patrol_points.size()
 		nav_agent.target_position = patrol_points[patrol_index]
+		
+		#if randf() < 0.5:
+		var random_voice = ice_cube_voice[randi() % ice_cube_voice.size()]
+		random_voice.play()
 
 # Get a random point wihtin the navigation polygon.
 func get_random_patrol_point() -> Vector2:
@@ -195,6 +224,8 @@ func check_player_detection():
 		if can_see_player():
 			if state != CHASE:
 				spotted.play()
+			else:
+				lose.play()
 			state = CHASE
 			time_since_seen = 0.0
 			last_seen_position = player.global_position

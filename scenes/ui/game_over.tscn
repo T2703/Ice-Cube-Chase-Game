@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://csy1c7rufmqv3"]
+[gd_scene load_steps=8 format=3 uid="uid://csy1c7rufmqv3"]
 
 [ext_resource type="Shader" path="res://scenes/ui/menu.gdshader" id="1_4nqjg"]
 [ext_resource type="Script" path="res://scripts/ui/menu/game_over.gd" id="1_d4kog"]
 [ext_resource type="FontFile" uid="uid://omfvsbdfk882" path="res://assets/fonts/Astron Boy.otf" id="1_wl0ym"]
 [ext_resource type="Texture2D" uid="uid://gabbu7a818xh" path="res://assets/ice cube/ice cube game over.png" id="2_c57wg"]
 [ext_resource type="AudioStream" uid="uid://dpgfwd7yt3u4" path="res://assets/sounds/menu/game_over.mp3" id="5_xf8sm"]
+[ext_resource type="AudioStream" uid="uid://c55uvceglx6ip" path="res://assets/sounds/ice cube/took.wav" id="6_cnmy4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oqev7"]
 shader = ExtResource("1_4nqjg")
@@ -83,6 +84,12 @@ position = Vector2(571, 325)
 stream = ExtResource("5_xf8sm")
 autoplay = true
 bus = &"Music"
+
+[node name="Took" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_cnmy4")
+volume_db = 1.0
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="toggled" from="RetryButton" to="." method="_on_retry_button_toggled"]

@@ -201,7 +201,7 @@ func _on_stamina_timer_timeout() -> void:
 func _on_stamina_regen_timer_timeout() -> void:
 	# Return but only when the player isn't sprinting.
 	# And when the stamina is less than 100.
-	if (not is_sprinting or direction.length() == 0) and stamina < 100:
+	if (not is_sprinting or direction.length() == 0 or !Input.is_action_pressed("shift")) and stamina < 100:
 		stamina += 1
 		stamina = clamp(stamina, 0, 100)
 		

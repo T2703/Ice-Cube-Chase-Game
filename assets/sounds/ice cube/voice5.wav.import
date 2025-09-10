@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://rbowh6a7buhr"
+path="res://.godot/imported/voice5.wav-f427954add084527a875bf7c67d82e4b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice cube/voice5.wav"
+dest_files=["res://.godot/imported/voice5.wav-f427954add084527a875bf7c67d82e4b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

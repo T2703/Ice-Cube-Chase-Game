@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bckryglqwbwyq"
+path="res://.godot/imported/jumpscare1.wav-a344b4d2d9455f9c62739915a50ef93c.sample"
+
+[deps]
+
+source_file="res://assets/sounds/ice cube/jumpscare1.wav"
+dest_files=["res://.godot/imported/jumpscare1.wav-a344b4d2d9455f9c62739915a50ef93c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
