@@ -31,7 +31,6 @@ target_desired_distance = 1.0
 path_max_distance = 10.0
 avoidance_enabled = true
 radius = 9.6
-debug_enabled = true
 
 [node name="Jumpscare" type="Area2D" parent="."]
 
