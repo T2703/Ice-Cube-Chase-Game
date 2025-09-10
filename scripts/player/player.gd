@@ -73,6 +73,9 @@ var look_offset: Vector2 = Vector2.ZERO
 # You can do the offset shaker huh.
 var shake_offset: Vector2 = Vector2.ZERO
 
+# The survival time for the player.
+var survival_time = 0.0
+
 # Gets the input of the player.
 func get_input():
 	# Movement
@@ -82,11 +85,14 @@ func get_input():
 
 # The run boy run mechanic for the player or sprinting. Must have for aliens.
 func run():
-	# If not sprinting then set the sprint to true and start the timer.
-	if not is_sprinting:
-		stamina_timer.start()
-		is_sprinting = true
-	current_speed = RUNNING_SPEED
+	# If not sprinting then set the sprint to true and start the timer and when only moving.
+	if direction.length() > 0:  
+		if not is_sprinting:
+			stamina_timer.start()
+			is_sprinting = true
+		current_speed = RUNNING_SPEED
+	else:
+		stop_run()
 
 # Return to walkiing.
 func stop_run():
@@ -162,9 +168,12 @@ func _physics_process(delta: float) -> void:
 
 # Anything unrelated to the movement
 func _process(delta: float) -> void:
+	if not is_dead:
+		survival_time += delta
+		
 	# Sprinting/running when shitfing.
 	if not is_dashing:
-		if Input.is_action_pressed("shift") and stamina > 0: 
+		if Input.is_action_pressed("shift") and stamina > 0 and direction.length() > 0: 
 			run()
 		else:
 			if is_sprinting:
@@ -192,7 +201,7 @@ func _on_stamina_timer_timeout() -> void:
 func _on_stamina_regen_timer_timeout() -> void:
 	# Return but only when the player isn't sprinting.
 	# And when the stamina is less than 100.
-	if not is_sprinting and stamina < 100:
+	if (not is_sprinting or direction.length() == 0) and stamina < 100:
 		stamina += 1
 		stamina = clamp(stamina, 0, 100)
 		
@@ -204,6 +213,8 @@ func _on_dash_timer_timeout() -> void:
 # Play the jumpscare when ice cube touches you.
 func _on_player_hitbox_area_entered(area: Area2D) -> void:
 	if area.name == "Jumpscare":
+		GlobalTimer.survival_time = survival_time
+		is_dead = true
 		get_tree().change_scene_to_file("res://scenes/ice cube/ice_cube_jumpscare.tscn")
 
 # Renable the hitbox when done with the dash i-frame timer thing.

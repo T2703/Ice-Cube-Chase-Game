@@ -12,11 +12,17 @@ extends Node2D
 # The cube itself.
 @export var icecube: CharacterBody2D
 
+# Spawn timer for the ice cubes.
+@onready var ice_cube_spawner_timer: Timer = $IceCubeSpawnerTimer
+
 # Width of the level.
 const LEVEL_WIDTH = 120
 
 # Height of the level.
 const LEVEL_HEIGHT = 120
+
+# The amount of ice cubes that can spawn.
+const MAX_ICE_CUBES = 4
 
 # The type of tile such as floors or walls.
 enum TileType { EMPTY, FLOOR, WALL }
@@ -24,13 +30,24 @@ enum TileType { EMPTY, FLOOR, WALL }
 # The grid of the level.
 var level_grid = []
 
+# The rooms array for a new ice cube to spawn.
+var rooms: Array[Rect2] = [] 
+
+# The ice cube counter
+var ice_cube_count = 0
+
+# Ice cube scene/HIM.
+var ice_cube_scene = load("res://scenes/ice cube/ice_cube.tscn")
+
 func _ready() -> void:
 	create_level()
+	ice_cube_spawner_timer.start()
 
 # Generates the level
 func generate_level():
 	# Start off empty.
 	level_grid = []
+	rooms.clear()
 	
 	# For each row/height in the level, append an empty array.
 	# This sizes up the grid.
@@ -42,7 +59,7 @@ func generate_level():
 			level_grid[y].append(TileType.EMPTY)
 		
 	# Stores every room's rect value
-	var rooms: Array[Rect2] = []
+	#var rooms: Array[Rect2] = []
 	var max_attempts = 100
 	var tries = 0
 	
@@ -158,8 +175,6 @@ func spawn_player(rooms: Array[Rect2]):
 	var spawn_player_pos = rooms.pick_random().get_center() * 16
 	var ice_cube_pos = rooms.pick_random().get_center() * 16
 	
-	print(spawn_player_pos, ice_cube_pos)
-	
 	# Make sure the player does not spawn too close to ice cube.
 	while spawn_player_pos.distance_to(ice_cube_pos) < min_distance:
 		ice_cube_pos = rooms.pick_random().get_center() * 16
@@ -204,3 +219,24 @@ func create_level():
 	spawn_player(generate_level())
 	add_walls()
 	render_level()
+
+# Spawn ice cube every 30 seconds.
+func _on_ice_cube_spawner_timer_timeout() -> void:
+	if ice_cube_count < MAX_ICE_CUBES and not rooms.is_empty():
+		ice_cube_count += 1
+		
+		# Add in another cube
+		var ice_cube_instance = ice_cube_scene.instantiate()
+		
+		# Pick a random room and position
+		var ice_cube_pos = rooms.pick_random().get_center() * 16
+		ice_cube_instance.position = ice_cube_pos
+		
+		# Setup patrol points for the new one.
+		var patrols: Array[Vector2] = []
+		for r in rooms:
+			patrols.append(r.get_center() * 16)
+		ice_cube_instance.set_patrol_points(patrols)
+		
+		add_child(ice_cube_instance)
+		

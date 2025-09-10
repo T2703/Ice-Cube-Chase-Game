@@ -66,3 +66,8 @@ stream = ExtResource("5_vwhs5")
 volume_db = -1.354
 autoplay = true
 bus = &"Music"
+
+[node name="IceCubeSpawnerTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="timeout" from="IceCubeSpawnerTimer" to="." method="_on_ice_cube_spawner_timer_timeout"]

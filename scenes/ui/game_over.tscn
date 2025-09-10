@@ -41,6 +41,16 @@ theme_override_fonts/font = ExtResource("1_wl0ym")
 theme_override_font_sizes/font_size = 70
 text = "Game Over! You got cubed!"
 
+[node name="BestTime" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 75.0
+offset_right = 741.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("1_wl0ym")
+theme_override_font_sizes/font_size = 40
+text = "You survived for 1:30"
+
 [node name="IceCubeGameOver" type="Sprite2D" parent="."]
 position = Vector2(676, 367)
 texture = ExtResource("2_c57wg")

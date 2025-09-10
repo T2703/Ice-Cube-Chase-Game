@@ -13,12 +13,17 @@ config_version=5
 config/name="ImComingForYouNow"
 run/main_scene="res://scenes/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=120
+
+[autoload]
+
+AutoLoadSettings="*res://scripts/ui/auto_load_settings.gd"
+GlobalTimer="*res://scripts/ui/global_timer.gd"
 
 [display]
 
 window/size/mode=3
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
 
 [dotnet]
 
