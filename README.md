@@ -14,7 +14,7 @@ _________________________
 _________________________
 
 # Itch.Io:
-Click the link here[https://nono-t27.itch.io/im-coming-for-you-now] to access the Itch.Io page and download the game.
+Click the link [here](https://nono-t27.itch.io/im-coming-for-you-now) to access the Itch.Io page and download the game.
 _________________________
 
 # Information:
