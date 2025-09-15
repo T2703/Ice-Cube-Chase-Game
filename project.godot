@@ -15,6 +15,7 @@ run/main_scene="res://scenes/ui/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=120
 config/icon="res://assets/ice cube/ice cube menu.png"
+config/windows_native_icon="res://assets/ice cube/favicon.ico"
 
 [autoload]
 
